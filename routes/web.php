@@ -21,8 +21,16 @@ Route::get('/pzn', function () {
     return "Hello Programmer Zaman Now";
 });
 
+Route::get('/hello', function () {
+    return view('hello', ['name' => 'Shandika']);
+});
+
+Route::get('/world', function () {
+    return view('hello.world', ['name' => 'Shandika']);
+});
+
 Route::redirect('/youtube', '/pzn');
 
-Route::fallback(function(){
+Route::fallback(function () {
     return "404 By Shandikadav";
 });
