@@ -34,3 +34,19 @@ Route::redirect('/youtube', '/pzn');
 Route::fallback(function () {
     return "404 By Shandikadav";
 });
+
+route::get('/products/{id}', function ($productId) {
+    return "Product $productId";
+});
+
+route::get('/products/{products}/items/{item}', function ($productId, $itemId) {
+    return "Product $productId, Item $itemId";
+});
+
+route::get('/categories/{id}', function ($categoryId) {
+    return "Category $categoryId";
+})->where('id', '[0-9]+');
+
+route::get('users/{id?}', function ($userId = '404') {
+    return "User $userId";
+});
