@@ -53,4 +53,12 @@ class RoutingTest extends TestCase
             $this->get('/users/')
             ->assertSeeText('User 404');
     }
+
+    public function testNamed() {
+        $this->get('/produk/12345')
+            ->assertSeeText('Link http://localhost/products/12345');
+
+            $this->get('/produk-redirect/12345')
+            ->assertSeeText('/products/12345');
+    }
 }

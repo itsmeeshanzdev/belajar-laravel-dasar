@@ -37,16 +37,25 @@ Route::fallback(function () {
 
 route::get('/products/{id}', function ($productId) {
     return "Product $productId";
-});
+})->name('product.detail');
 
 route::get('/products/{products}/items/{item}', function ($productId, $itemId) {
     return "Product $productId, Item $itemId";
-});
+})->name('product.item.detail');
 
 route::get('/categories/{id}', function ($categoryId) {
     return "Category $categoryId";
-})->where('id', '[0-9]+');
+})->where('id', '[0-9]+')->name('category.detail');
 
 route::get('users/{id?}', function ($userId = '404') {
     return "User $userId";
+})->name('user.detail');
+
+route::get('/produk/{id}', function ($id) {
+    $link = route('product.detail', ['id' => $id]);
+    return "Link $link";
+});
+
+route::get('produk-redirect/{id}', function ($id) {
+    return redirect()->route('product.detail', ['id' => $id]);
 });
